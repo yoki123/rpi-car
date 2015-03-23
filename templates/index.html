@@ -1,0 +1,132 @@
+<!DOCTYPE >
+<html>
+<head>
+	<!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+	<title>Car Controller</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<style type="text/css">
+	body,table,input {
+		font-family: '微软雅黑';
+	}
+    .control_panel{
+        /*max-width: 640px;*/
+        width:100%;
+        margin: 0 auto;
+    }
+    .control_panel table{
+        width:100%;
+    }
+    .control_panel table tr{
+        width:100%;
+    }
+    .control_panel table tr td{
+        width:33.3%;
+        text-align: center;
+        margin: 15px 0;
+    }
+    .control_panel table tr td.left{
+        text-align: right;
+    }
+    .control_panel table tr td.right{
+        text-align: left;
+    }
+	.control_panel input {
+	    /*background: #FFF;*/
+		background-color: transparent;
+		border: 0;
+		width: 6.25em;
+		height: 6.25em;
+		margin: 0.5em;
+		color: #EEE;
+	}
+	.control_panel input:hover {
+		background-position: -22px -22px;
+		background-size: 124px 124px;
+	}
+    .control_panel .up-btn {
+        background-image: url(/static/up-256.png);
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+        background-position: -20px -20px;
+    }
+    .control_panel .left-btn {
+        background-image: url(/static/left-256.png);
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+        background-position: -20px -20px;
+    }
+
+    .control_panel .right-btn {
+        background-image: url(/static/right-256.png);
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+        background-position: -20px -20px;
+    }
+
+    .control_panel .bottom-btn {
+        background-image: url(/static/down-256.png);
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+        background-position: -20px -20px;
+    }
+
+    .control_panel .center-btn {
+        background-image: url(/static/pause-256.png);
+        background-repeat: no-repeat;
+        background-size: 120px 120px;
+        background-position: -20px -20px;
+    }
+	</style>
+
+</head>
+<body>
+<div class="control_panel">
+<table>
+	<tr>
+		<td></td>
+		<td><input type="button" operation="forward" class="up-btn btn"/></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td class="left"><input type="button" operation="left" class="left-btn btn"/></td>
+		<td><input type="button" operation="pause" class="center-btn btn"/></td>
+		<td class="right"><input type="button" operation="right" class="right-btn btn"/></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="button" operation="backward" class="bottom-btn btn"/></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>
+<script type='text/javascript' src='http://ajax.useso.com/ajax/libs/jquery/1.7.2/jquery.min.js?ver=3.4.2'></script>
+<script type="text/javascript">
+    $(function(){
+        setH();
+        $(window).resize(function(){
+            setH();
+        });
+        $('.btn').click(function(){
+            $.get("/handle", {type: $(this).attr('operation')}, function(data) {
+                if (data=="ok") {
+
+                } else {
+                    alert('system error')
+                }
+            });
+        });
+    });
+    function setH(){
+        var winHei = "", boxHei = "";
+        winHei = $(window).height();
+        boxHei = $('.control_panel').height();
+        console.log(winHei);
+        console.log(boxHei);
+        $('.control_panel').css('margin-top',(winHei-boxHei)/2);
+    }
+</script>
