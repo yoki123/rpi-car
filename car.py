@@ -2,17 +2,23 @@ import RPi.GPIO as gpio
 
 
 class Wheel(object):
-    def __init__(self, pin1, pin2, pin3, pin4):
-        self.pin1 = pin1
-        self.pin2 = pin2
+    def __init__(self, in_pin1, in_pin2, enable_pin1, enable_pin2):
+        '''
+        :param in_pin1 in_pin2: IN1 IN2 or IN3 IN4
+        :param enable_pin1 enable_pin2: ENA or ENB
+        '''
+        self.pin1 = in_pin1
+        self.pin2 = in_pin2
 
-        gpio.setup(pin1, gpio.OUT)
-        gpio.setup(pin2, gpio.OUT)
-        gpio.setup(pin3, gpio.OUT)
-        gpio.setup(pin4, gpio.OUT)
+        # setup I/O OUT
+        gpio.setup(in_pin1, gpio.OUT)
+        gpio.setup(in_pin2, gpio.OUT)
+        gpio.setup(enable_pin1, gpio.OUT)
+        gpio.setup(enable_pin2, gpio.OUT)
 
-        gpio.output(pin3, True)
-        gpio.output(pin4, True)
+        # enable
+        gpio.output(enable_pin1, True)
+        gpio.output(enable_pin2, True)
 
     def forward(self):
         gpio.output(self.pin1, True)
