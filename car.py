@@ -1,4 +1,5 @@
 import RPi.GPIO as gpio
+import config as c
 
 
 class Wheel(object):
@@ -43,8 +44,8 @@ class Car(object):
     def __init__(self):
         gpio.setmode(gpio.BOARD)
 
-        self.left_wheel = Wheel(13, 15, 7, 11)
-        self.right_wheel = Wheel(16, 18, 22, 29)
+        self.left_wheel = Wheel(c.PIN_IO_IN1, c.PIN_IO_IN2, c.PIN_ENABLE_A1, c.PIN_ENABLE_A2)
+        self.right_wheel = Wheel(c.PIN_IO_IN3, c.PIN_IO_IN3, c.PIN_ENABLE_B1, c.PIN_ENABLE_B2)
 
     def forward(self):
         self.left_wheel.forward()

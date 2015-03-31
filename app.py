@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*
 from flask import Flask, render_template, request, abort
 from car import Car
+from config import WEB_PORT
 
 app = Flask(__name__)
 
@@ -36,4 +37,4 @@ def handle():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8888, debug=False)
+    app.run(host="0.0.0.0", port=WEB_PORT, debug=False)
