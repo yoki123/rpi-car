@@ -45,7 +45,7 @@ class Car(object):
         gpio.setmode(gpio.BOARD)
 
         self.left_wheel = Wheel(c.PIN_IO_IN1, c.PIN_IO_IN2, c.PIN_ENABLE_A1, c.PIN_ENABLE_A2)
-        self.right_wheel = Wheel(c.PIN_IO_IN3, c.PIN_IO_IN3, c.PIN_ENABLE_B1, c.PIN_ENABLE_B2)
+        self.right_wheel = Wheel(c.PIN_IO_IN3, c.PIN_IO_IN4, c.PIN_ENABLE_B1, c.PIN_ENABLE_B2)
 
     def forward(self):
         self.left_wheel.forward()
