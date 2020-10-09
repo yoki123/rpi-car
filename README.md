@@ -1,16 +1,12 @@
-# 树莓派小车遥控器
------
-## Need
+# An remote controller for the Raspberry Pi Car
 
-需要Flask、RPi.GPIO模块
+## Dependence
+ - Flask
+ - RPi.GPIO
 
-## 使用
-
-1. 编辑*config.py*，根据连接的GPIO针脚号修改对应的数值；
-2. 启动程序
-
-```python app.py```
-
-## UI
-
+## Usage
+1. Edit *config.py*, modify the GPIO pin number to which you connectted
+1. start the application
+  ``` python app.py```
+## UI sample
 ![sample](https://github.com/fordoo/rpi-car/blob/master/sample.png?raw=true)
